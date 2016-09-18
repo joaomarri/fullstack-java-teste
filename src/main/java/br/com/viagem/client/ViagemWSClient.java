@@ -3,12 +3,9 @@ package br.com.viagem.client;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 import javax.xml.transform.TransformerException;
 
@@ -21,23 +18,19 @@ import org.springframework.ws.soap.saaj.SaajSoapMessage;
 
 import br.com.viagem.schema.PesquisarSolicitacaoRequest;
 import br.com.viagem.schema.PesquisarSolicitacaoResponse;
+import br.com.viagem.util.DateUtil;
 
 
 @Component
 public class ViagemWSClient extends WebServiceGatewaySupport {
 	
     @SuppressWarnings("unchecked")
-	public PesquisarSolicitacaoResponse getSolicitacoesDeViagem() throws DatatypeConfigurationException {
+	public PesquisarSolicitacaoResponse consultaViagensUltimos3Meses() throws DatatypeConfigurationException {
 	   
         Date dataHoje = new Date();
-        GregorianCalendar c = new GregorianCalendar();
-        c.setTime(dataHoje);
-        XMLGregorianCalendar data = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
-
-        
         PesquisarSolicitacaoRequest request = new PesquisarSolicitacaoRequest();
-        request.setDataInicial(data);
-        request.setDataFinal(data);
+        request.setDataInicial( DateUtil.somaDecrementaMes(dataHoje, -3) );
+        request.setDataFinal( DateUtil.toXmlGregorianCalendar(dataHoje) );
         request.setRegistroInicial(1);
         request.setQuantidadeRegistros(50);
         request.setSincronizado(false);
@@ -64,78 +57,6 @@ public class ViagemWSClient extends WebServiceGatewaySupport {
          
         return response.getValue();
 	 }
-  
-  
-	/*public AutenticarUsuarioResponse autenticarUsuario() {
-		AutenticarUsuario request = new AutenticarUsuario();
-		request.setLogin("primew01");
-		request.setSenha("cl8V0DPt8Mw=");
-		
-		//setProxy();
-		
-		AutenticarUsuarioResponse response = (AutenticarUsuarioResponse) getWebServiceTemplate().marshalSendAndReceive(
-				request, 
-				new SoapActionCallback("http://boticario.com.br/wsdadosvarejo/AutenticarUsuario")
-		);
-		
-		return response;
-	}
-
-	public ListarRegionaisResponse getListarRegionais() {
-		if (autenticarUsuario == null) {
-			autenticarUsuario = autenticarUsuario();
-		}
-		
-		ListarRegionais request = new ListarRegionais();
-		request.setToken(autenticarUsuario.getAutenticarUsuarioResult());
-		
-		//setProxy();
-		
-		ListarRegionaisResponse response = (ListarRegionaisResponse) getWebServiceTemplate().marshalSendAndReceive(
-				request, 
-				new SoapActionCallback("http://boticario.com.br/wsdadosvarejo/ListarRegionais")
-		);
-		
-		return response;
-	}
-	
-	public ListarFranquiasPorRegionalResponse getListarFranquiaPorRegional(Integer codigoRegional) {
-		if (autenticarUsuario == null) {
-			autenticarUsuario = autenticarUsuario();
-		}
-		//setProxy();
-		
-		ListarFranquiasPorRegional request = new ListarFranquiasPorRegional();
-		request.setToken(autenticarUsuario.getAutenticarUsuarioResult());
-		request.setCodigoRegional(codigoRegional);
-		
-		ListarFranquiasPorRegionalResponse response = (ListarFranquiasPorRegionalResponse) getWebServiceTemplate().marshalSendAndReceive(
-				request, 
-				new SoapActionCallback("http://boticario.com.br/wsdadosvarejo/ListarFranquiasPorRegional")
-		);
-		
-		return response;
-	}
-	
-	public ListarMovimentacoesFranquiaResponse getListarMovimentacoesFranquia(Integer codigoFranquia) {
-		if (autenticarUsuario == null) {
-			autenticarUsuario = autenticarUsuario();
-		}
-		//setProxy();
-		
-		ListarMovimentacoesFranquia request = new ListarMovimentacoesFranquia();
-		request.setToken(autenticarUsuario.getAutenticarUsuarioResult());
-		request.setCodigoFranquia(codigoFranquia);
-		
-		ListarMovimentacoesFranquiaResponse response = (ListarMovimentacoesFranquiaResponse) getWebServiceTemplate().marshalSendAndReceive(
-				request, 
-				new SoapActionCallback("http://boticario.com.br/wsdadosvarejo/ListarMovimentacoesFranquia")
-		);
-		
-		return response;
-	}*/
-	
-	
 	
 	
 }

@@ -22,6 +22,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<hsqldb.version>2.3.2</hsqldb.version>
+		<dbcp.version>2.1</dbcp.version>
 	</properties>
 
 	<dependencies>
@@ -34,6 +36,23 @@
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-core</artifactId>
         </dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${dbcp.version}</version>
+		</dependency>
 
     	<dependency>
      		<groupId>junit</groupId>
@@ -55,8 +74,19 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			
+			
 			<!-- tag::wsdl[] -->
-            <plugin>
+           <!--  <plugin>
                	<groupId>org.jvnet.jaxb2.maven2</groupId>
 				<artifactId>maven-jaxb2-plugin</artifactId>
 				<version>0.12.3</version>
@@ -79,7 +109,7 @@
                     
                 </configuration>
             </plugin>
-            <!-- end::wsdl[] -->
+   -->          <!-- end::wsdl[] -->
   
 			
 		</plugins>
