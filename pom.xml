@@ -5,7 +5,7 @@
 
 	<groupId>br.com.viagem</groupId>
 	<artifactId>fullstack-java-teste</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>fullstack-java-teste</name>
@@ -54,6 +54,34 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<!-- tag::wsdl[] -->
+            <plugin>
+               	<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.12.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaLanguage>WSDL</schemaLanguage>
+                    <generatePackage>br.com.viagem.schema</generatePackage>
+                    
+                    <cleanPackageDirectories>false</cleanPackageDirectories>
+                    
+                   <schemaIncludes>
+                   		<schemaInclude>*.wsdl</schemaInclude>
+                   </schemaIncludes>
+                    
+                </configuration>
+            </plugin>
+            <!-- end::wsdl[] -->
+  
+			
 		</plugins>
 	</build>
 

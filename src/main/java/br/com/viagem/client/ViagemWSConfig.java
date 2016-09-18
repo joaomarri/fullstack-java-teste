@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
-//@Configuration
-public class ViagemConfiguracao {
+@Configuration
+public class ViagemWSConfig {
 
-	/*@Bean
+	@Bean
 	public Jaxb2Marshaller marshaller() {
 		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 		marshaller.setContextPath("br.com.viagem.schema");
@@ -19,13 +19,12 @@ public class ViagemConfiguracao {
 	@Bean
 	public ViagemWSClient viagemClient(Jaxb2Marshaller marshaller) {
 		ViagemWSClient client = new ViagemWSClient();
-		WebServiceTemplate template = client.getWebServiceTemplate();
-		//template.setMessageSender(new WebServiceMessageSenderWithAuth());
+		//WebServiceTemplate template = client.getWebServiceTemplate();
 		
 		client.setDefaultUri("https://treinamento.lemontech.com.br/wsselfbooking/WsSelfBookingService");
-		//client.setMarshaller(marshaller);
-		//client.setUnmarshaller(marshaller);
+		client.setMarshaller(marshaller);
+		client.setUnmarshaller(marshaller);
 		return client;
-	}*/
+	}
 
 }

@@ -1,19 +1,25 @@
 
 package br.com.viajem;
 
-import br.com.viagem.client.WebServiceClient;
+import javax.xml.datatype.DatatypeConfigurationException;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
+
+import br.com.viagem.client.ViagemWSConfig;
+import br.com.viagem.client.ViagemWSClient;
+import br.com.viagem.schema.PesquisarSolicitacaoResponse;
 
 
 public class ApplicationTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DatatypeConfigurationException {
 		//teste
-		//ApplicationContext ctx = SpringApplication.run(ViagemConfiguracao.class, args);
+		ApplicationContext ctx = SpringApplication.run(ViagemWSConfig.class, args);
 		
-		//ViagemWSClient viagemClient = ctx.getBean(ViagemWSClient.class);
-		//viagemClient.getWebServiceTemplate();
-	  WebServiceClient client = new WebServiceClient();
-	  client.customSendAndReceive();
+		ViagemWSClient viagemClient = ctx.getBean(ViagemWSClient.class);
+		PesquisarSolicitacaoResponse response = viagemClient.getSolicitacoesDeViagem();
+		System.out.println(response.getNumeroSolicitacoes());
 	  
 	}
 
