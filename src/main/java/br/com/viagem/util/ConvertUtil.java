@@ -10,6 +10,11 @@ import br.com.viagem.schema.Passageiro;
 import br.com.viagem.schema.PesquisarSolicitacaoResponse;
 import br.com.viagem.schema.Solicitacao;
 
+/**
+ * Classe utilitaria para realizar a conversao dos dados do response para as entidades do modelo
+ * @author joaopaulo
+ *
+ */
 public class ConvertUtil {
 
 	public List<Viagem> responseToViagensModel(PesquisarSolicitacaoResponse response) {

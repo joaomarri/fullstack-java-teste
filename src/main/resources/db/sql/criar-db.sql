@@ -2,6 +2,10 @@
 
 CREATE TABLE viagem (
   idSolicitacao  INTEGER PRIMARY KEY,
-  name VARCHAR(30),
-  email  VARCHAR(50)
+  nomePassageiro VARCHAR(200),
+  companhiaArea  VARCHAR(100),
+  dataSaida TIMESTAMP,
+  dataChegada TIMESTAMP,
+  cidadeOrigem   VARCHAR(100),
+  cidadeDestino  VARCHAR(100)
 );

@@ -1,52 +1,28 @@
-# Por que trabalhar na Lemontech
+Consulta de Solicitações de Viagens
+===============================
+Aplicação Web java desenvolvida para pode testar a chamada do serviço SOAP pesqisarSolicitacao e pode persisitir os dados em algum Banco de dados.
 
-A Lemontech é uma empresa especializada no desenvolvimento de softwares que contribuem na Gestão das Viagens Corporativas.
-Têm como principais objetivos, reduzir custos e tornar os processos mais dinâmicos.
-O Sistema Lemontech, é utilizado por corporações e agências de viagens que buscam economia, eficiência e automação dos seus negócios.ditamos no poder da tecnologia para melhorar continuamente a vida das pessoas. 
+###1. Technologias utilizadas
+* Java 8
+* Maven 3.3
+* Spring 4.3.2.RELEASE
+* HSQLDB 2.3.2
+* Hibernate 4.3.6
 
-Se você tem espírito e comportamento empreendedor, muita disposição e proatividade para trabalhar em uma empresa em franca expansão, você é um forte candidato :)
+###2. Arquitetura
+Esse projeto foi desenvolvido com o padrão MVC para camada de apresentação dos dados, a utilização do padrão ORM para a persistencia das informações e a customização de um componente client para consumir a API de serviços SOAP.
+Foi utilizado o SGDB HSQL de modo embedado na aplicação e por isso não é necessario a instalação e configuração de algum banco de dados para pode executar esse projeto para teste local. 
 
-Como Desenvolvedor Full-stack você irá atuar no desenvolvimento de soluções em arquitetura Java Web MVC, Java EE, integrações com outros sistemas (SOAP, REST, JMS) e soluções escaláveis, participando de todo o processo de desenvolvimento, desde tomadas de decisões à codificação e testes.
+###3. Para executar este projeto local
+```shell
+$ git clone https://github.com/
+$ mvn jetty:run
+```
+Acesse ```http://localhost:8080/fullstack-java-teste/```
+Depois de acessar a url acima verifique os dados gravados no banco utilizando a ferrmenta HSQL Database Manager que já esta configura no projeto e será apresentada ao usuario.
 
-# O que preciso fazer?
+###4. Para importar esse projeto no Eclipse IDE
+1. ```$ mvn eclipse:eclipse```
+2. Import into Eclipse via **Existing mavem projects**.
+3. Selecione o projeto que deseja importar e clique em finish.
 
-Vamos ser práticos e diretos, se você quer trabalhar conosco siga os passos abaixo:
-
-* Faça um "fork" desse projeto para sua conta GitHub.
-* Implemente o desafio descrito no tópico abaixo.
-* Faça um push para seu repositório com o desafio implementado.
-* Envie um email para (rh@lemontech.com.br) avisando que finalizou o desafio com a url do seu fork.
-* Cruze os dedos e aguarde nosso contato.
-
-# O desafio (Consulta de Solicitações de Viagens)
-
-Você deverá criar uma aplicação consumidora de nossa API de webservice para consultar viagens e persistir em banco de dados:
-
-Endpoint: https://treinamento.lemontech.com.br/wsselfbooking/WsSelfBookingService?wsdl
-
-Arquitetura: Pode-se utilizar qualquer recurso da especificação JavaEE.
-
-Consultar as viagens dos últimos 3 meses (utilizar método pesquisarSolicitacao).
-
-Criar banco de dados / tabela para persistir as informações da viagem: Nome do Passageiro, CIA Aérea, Data/Hora de saida e Chegada, Cidades de origem e destino.
-
-Segregar os Serviços de consulta ao WS e o de persistência no BD, imaginando que poderiam estar em ambiente distribuído e após consulta ao Webservice a viagem possa ser enviada de alguma forma para um local onde o serviço de persistência tenha acesso posteriormente para que possa efetivar a gravação na tabela. 
-
-Propor solução utilizando padrões e funcionalidades JavaEE.
-
-### Arquitetura e documentação
-
-No arquivo README do projeto explique o funcionamento e a arquitetura da solução adotada na sua implementação. Descreva também os passos para executar corretamente seu projeto.
-
-### Avaliação
-
-Entre os critérios de avaliação estão:
-
-* Facilidade de configuração do projeto
-* Performance
-* Código limpo e organização
-* Documentação de código
-* Documentação do projeto (readme)
-* Arquitetura
-* Boas práticas de desenvolvimento
-* Design Patterns

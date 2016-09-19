@@ -2,20 +2,40 @@ package br.com.viagem.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+ * Representa uma entidade do modelo, utilizado para aramazenar os valores de uma viagem
+ * @author joaopaulo
+ *
+ */
+@Entity
+@Table(name="Viagem")
 public class Viagem {
 
+	@Id
+	@Column(name="idSolicitacao")
 	private Integer idSolicitacao;
 	
+	@Column(name="nomePassageiro")
 	private String nomePassageiro;
 	
+	@Column(name="companhiaArea")
 	private String companhiaArea;
 	
+	@Column(name="dataChegada")
 	private Date dataChegada;
 	
+	@Column(name="dataSaida")
 	private Date dataSaida;
 	
+	@Column(name="cidadeOrigem")
 	private String cidadeOrigem;
 	
+	@Column(name="cidadeDestino")
 	private String cidadeDestino;
 
 	

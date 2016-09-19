@@ -20,6 +20,11 @@ import br.com.viagem.schema.PesquisarSolicitacaoRequest;
 import br.com.viagem.schema.PesquisarSolicitacaoResponse;
 import br.com.viagem.util.DateUtil;
 
+/**
+ * Componente client ws utilizado para se comunicar via SOAP com o serviço pesquisarSolicitacao 
+ * @author joaopaulo
+ *
+ */
 
 @Component
 public class ViagemWSClient extends WebServiceGatewaySupport {
