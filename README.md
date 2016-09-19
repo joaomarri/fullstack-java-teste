@@ -15,14 +15,18 @@ Foi utilizado o SGDB HSQL de modo embedado na aplicação e por isso não é nec
 
 ###3. Para executar este projeto local
 ```shell
-$ git clone https://github.com/
+$ git clone https://github.com/joaomarri/fullstack-java-teste
 $ mvn jetty:run
 ```
 Acesse ```http://localhost:8080/fullstack-java-teste/```
-Depois de acessar a url acima verifique os dados gravados no banco utilizando a ferrmenta HSQL Database Manager que já esta configura no projeto e será apresentada ao usuario.
+
+```
+Obs: Depois de acessar a url acima verifique os dados gravados no banco utilizando a ferrmenta HSQL Database Manager que já esta configura no projeto e será apresentada ao usuario.```
+
+Para consultar os dados no banco: ```select * from viagem```
 
 ###4. Para importar esse projeto no Eclipse IDE
 1. ```$ mvn eclipse:eclipse```
-2. Import into Eclipse via **Existing mavem projects**.
+2. Importe para o Eclipse via **Existing mavem projects**.
 3. Selecione o projeto que deseja importar e clique em finish.
 
