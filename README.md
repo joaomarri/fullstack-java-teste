@@ -27,6 +27,6 @@ Para consultar os dados no banco: ```select * from viagem```
 
 ###4. Para importar esse projeto no Eclipse IDE
 1. ```$ mvn eclipse:eclipse```
-2. Importe para o Eclipse via **Existing mavem projects**.
+2. Importe para o Eclipse via opção: Import **Existing mavem projects**.
 3. Selecione o projeto que deseja importar e clique em finish.
 
