@@ -21,7 +21,7 @@ $ mvn jetty:run
 Acesse ```http://localhost:8080/fullstack-java-teste/```
 
 Obs: Depois de acessar a url acima verifique os dados gravados no banco utilizando a ferrmenta 
-HSQL Database Manager que já esta configura no projeto e será apresentada ao usuario.
+HSQL Database Manager que já esta configurado no projeto e será apresentada ao usuario.
 
 Para consultar os dados no banco: ```select * from viagem```
 
