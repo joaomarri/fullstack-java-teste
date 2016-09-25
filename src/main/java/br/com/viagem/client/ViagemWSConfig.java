@@ -13,7 +13,7 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
  *
  */
 
-@ComponentScan({ "br.com.viagem" })
+@ComponentScan({ "br.com.viagem.client", "br.com.viagem.schema" })
 @Configuration
 public class ViagemWSConfig {
 

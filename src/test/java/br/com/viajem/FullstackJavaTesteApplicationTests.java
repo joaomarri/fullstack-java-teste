@@ -6,28 +6,44 @@ import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.ApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import br.com.viagem.client.ViagemWSClient;
 import br.com.viagem.client.ViagemWSConfig;
 import br.com.viagem.model.Viagem;
 import br.com.viagem.schema.PesquisarSolicitacaoResponse;
+import br.com.viagem.schema.ResultadoAcao;
 import br.com.viagem.util.ConvertUtil;
 
+/**
+ * Teste de integração com serviço SOAP pesquisarSolicitacao para verificar se a quantidade de
+ * solicitações recebidas na resposta é mesma da lista de Viagens criada apos a conversão.
+ * @author joaopaulo
+ *
+ */
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = {ViagemWSConfig.class})
 public class FullstackJavaTesteApplicationTests {
 
-	private ViagemWSClient viagemClient;
 	
-	public FullstackJavaTesteApplicationTests() {
-		ApplicationContext ctx = SpringApplication.run(ViagemWSConfig.class);
-		viagemClient = ctx.getBean(ViagemWSClient.class);
+	@Autowired
+	private ViagemWSClient viagemWSClient;
+	
+	
+	@Test
+	public void verificaSeChamadaAoServicoSoapResultouSucesso() throws DatatypeConfigurationException {
+		PesquisarSolicitacaoResponse response = viagemWSClient.consultaViagensUltimos3Meses();
+		Assert.assertTrue(response.getResultadoAcao().equals(ResultadoAcao.SUCESSO));
 	}
+	
 	
 	@Test
 	public void verificaNumeroDeSolicitacoesAposChamarServicoSoap() throws DatatypeConfigurationException {
-		
-		PesquisarSolicitacaoResponse response = viagemClient.consultaViagensUltimos3Meses();
+		PesquisarSolicitacaoResponse response = viagemWSClient.consultaViagensUltimos3Meses();
 		ConvertUtil convertUtil = new ConvertUtil();
 		List<Viagem> viagens = convertUtil.responseToViagensModel(response);
 		
